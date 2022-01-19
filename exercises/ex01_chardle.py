@@ -2,7 +2,6 @@
 
 _author_ = "730397253"
 
-"""THIS NEEDS TO CHECK FOR LESS THAN 5 CHARACTERS TOO"""
 five_char_word = str(input("Enter a 5-character word: "))
 if (len(five_char_word) > 5):
     print("Error: Word must contain 5 characters")
