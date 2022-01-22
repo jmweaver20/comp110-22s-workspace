@@ -1,6 +1,6 @@
 """EX01 - Chardle - A cute step toward Worldle."""
 
-_author_ = "730397253"
+_author_ = str("730397253")
 
 five_char_word = str(input("Enter a 5-character word: "))
 if (len(five_char_word) > 5):
@@ -13,6 +13,9 @@ if (len(five_char_word) < 5):
 
 single_char = str(input("Enter a single character: "))
 if (len(single_char) > 1):
+    print("Error: Character must be a single character.")
+    exit()
+if (len(single_char) < 1):
     print("Error: Character must be a single character.")
     exit()
 
@@ -30,12 +33,14 @@ if (single_char == five_char_word[2]):
     match_count = match_count + 1
 if (single_char == five_char_word[3]):
     print(single_char + " found at index 3")
-    matchcount = match_count + 1
+    match_count = match_count + 1
 if (single_char == five_char_word[4]):
     print(single_char + " found at index 4")
     match_count = match_count + 1
 
-if (match_count >= 1):
+if (match_count > 1):
     print(str(match_count) + " instances of " + single_char + " found in " + five_char_word)
+if (match_count == 1):
+    print(str(match_count) + " instance of " + single_char + " found in " + five_char_word)
 else:
     print("No instances of " + single_char + " found in " + five_char_word)
