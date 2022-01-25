@@ -8,17 +8,29 @@ WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 i: int = 0  # Index Tracker
+i2: int = 0  # Index Tracker for Yellow Boxes - make sure we need this?
+char_exist: bool = False
 emoji_guess: str = ""
 
 while (len(user_guess) < len(secret_word) or len(user_guess) > len(secret_word)):
     user_guess = str(input("That was not 6 letters! Try again: "))
 
 while (i < len(secret_word)):
+
     if (secret_word[i] == user_guess[i]):
         emoji_guess = emoji_guess + GREEN_BOX
+        i = i + 1
     else:
-        emoji_guess = emoji_guess + WHITE_BOX
-    i = i + 1
+        i = i + 1
+        while (char_exist != True and (i2 < len(secret_word))):  # != operator not valid? why is it underlined
+            if (secret_word[i2] == user_guess[i]):
+                char_exist = True
+            else:
+                i2 = i2 + 1
+        if (char_exist):
+            emoji_guess = emoji_guess + YELLOW_BOX
+        else:
+            emoji_guess = emoji_guess + WHITE_BOX  # why is white box not printing
 
 print(emoji_guess)
 
