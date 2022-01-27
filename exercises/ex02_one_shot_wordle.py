@@ -14,7 +14,7 @@ GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
 i: int = 0  # Index Tracker for Main Loop
-i2: int = 0  # Index Tracker for Yellow Boxes - make sure we need this?
+i2: int = 0  # Index Tracker for Yellow Boxes
 char_exist: bool = False
 emoji_guess: str = ""
 
@@ -52,7 +52,3 @@ if (user_guess == secret_word):
     print("Woo! You got it!")
 else:
     print("Not quite. Play again soon!")
-
-# Instructions said to use f-string outputs but I haven't found a place to use those?
-# why does the char_exist != True logic not working (it's underlined)
-# white box when char_exist is false isn't printing?
