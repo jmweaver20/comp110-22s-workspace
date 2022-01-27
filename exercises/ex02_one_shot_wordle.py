@@ -1,4 +1,4 @@
-"""Wordle program using loops & implementing more advanced character methods"""
+"""Wordle program using loops & implementing more advanced character methods."""
 
 __author__ = "730397253"
 
