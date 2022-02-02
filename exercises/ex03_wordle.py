@@ -50,3 +50,24 @@ def input_guess(expected_length: int) -> str:
         while (len(word) < expected_length or len(word) > expected_length):
             word = str(input("That wasn't " + length + " chars! Try again: "))
     return word
+
+
+def main() -> None:
+    turn: int = 1
+    secret_word: str = "codes"
+
+    while (turn < 6):
+        print("=== Turn " + str(turn) + "/6 ===")
+        input_guess(5)
+        emojified(input_guess(5), secret_word)
+        if (input_guess(5) == secret_word):
+            print("You won in" + str(turn) + "/6 turns!")
+        else:
+            turn += 1
+    
+    if (turn == 6 and (input_guess(5) != secret_word)):
+        print("X/6 - Sorry, try again tomorrow!")
+
+
+if __name__ == "__main__":
+    main()
