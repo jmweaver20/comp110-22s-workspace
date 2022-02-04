@@ -56,6 +56,7 @@ def input_guess(expected_length: int) -> str:
 
 
 def main() -> None:
+    """Main function which ensures user has 6 turns and exits when won."""
     turn: int = 1
     secret_word: str = "codes"
     word_guess: str = ""
@@ -64,7 +65,7 @@ def main() -> None:
     # Ensures six turns are allowed and stops the program if the user wins.
     while (turn <= 6 and (win is False)):
         print("=== Turn " + str(turn) + "/6 ===")
-        word_guess: str = input_guess(5)
+        word_guess = input_guess(5)
 
         print(emojified(word_guess, secret_word))
 
