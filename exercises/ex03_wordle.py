@@ -55,17 +55,22 @@ def input_guess(expected_length: int) -> str:
 def main() -> None:
     turn: int = 1
     secret_word: str = "codes"
-
-    while (turn < 6):
+    word_guess: str = ""
+    win: bool = False
+    
+    while (turn <= 6 and (win is False)):
         print("=== Turn " + str(turn) + "/6 ===")
-        input_guess(5)
-        emojified(input_guess(5), secret_word)
-        if (input_guess(5) == secret_word):
-            print("You won in" + str(turn) + "/6 turns!")
+        word_guess: str = input_guess(5)
+
+        print(emojified(word_guess, secret_word))
+
+        if (word_guess == secret_word):
+            print("You won in " + str(turn) + "/6 turns!")
+            win = True
         else:
             turn += 1
     
-    if (turn == 6 and (input_guess(5) != secret_word)):
+    if (win is False):
         print("X/6 - Sorry, try again tomorrow!")
 
 
