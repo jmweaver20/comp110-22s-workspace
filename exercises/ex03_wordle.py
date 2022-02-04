@@ -7,7 +7,8 @@ def contains_char(guess: str, single_char: str) -> bool:
     """Searches for a single character in the 'guess' string."""
     assert len(single_char) == 1
     i: int = 0
-
+    
+    # Loop to see if if guess contains the character.
     while (i < len(guess)):
         if (i == (len(guess) - 1) and guess[i] != single_char):
             return False
@@ -26,6 +27,7 @@ def emojified(guess: str, secret: str) -> str:
     emoji_string: str = ""
     i: int = 0
 
+    # Loop which concatonates emoji string with appropriate boxes.
     while (i < len(secret)):
         if (guess[i] == secret[i]):
             emoji_string += GREEN_BOX
@@ -44,6 +46,7 @@ def input_guess(expected_length: int) -> str:
     length = str(expected_length)
     word = str(input("Enter a " + length + " character word: "))
 
+    # Ensures the word is the expected length and if not, outputs error message.
     if (len(word) == expected_length):
         return word
     else:
@@ -58,6 +61,7 @@ def main() -> None:
     word_guess: str = ""
     win: bool = False
     
+    # Ensures six turns are allowed and stops the program if the user wins.
     while (turn <= 6 and (win is False)):
         print("=== Turn " + str(turn) + "/6 ===")
         word_guess: str = input_guess(5)
