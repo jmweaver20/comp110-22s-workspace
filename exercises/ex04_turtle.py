@@ -55,6 +55,21 @@ def draw_house_base(base: Turtle, windows: Turtle, x: float, y: float) -> None:
         base.right(90)
         base.forward(25)
         i += 1
+    make_square(windows, x + 5, y + -45)
+    make_square(windows, x + 175, y + -45)
+
+
+def make_square(square: Turtle, x: float, y: float) -> None:
+    "Draws a square at desired x, y position."
+    square.color(0, 0, 0)
+    square.up()
+    square.goto(x, y)
+    square.down()
+    i: int = 0
+    while (i < 4):
+        square.forward(50)
+        square.right(90)
+        i += 1
     
 
 if __name__ == "__main__":
