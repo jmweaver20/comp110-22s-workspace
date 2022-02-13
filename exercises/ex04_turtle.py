@@ -13,7 +13,8 @@ def main() -> None:
     leo: Turtle = Turtle()
     draw_sun(bob, leo, -200.0, 250.0)
     draw_house_base(bob, leo, 0.0, 0.0)
-    draw_house_roof(bob, 10, 62, 270)
+    draw_house_roof(bob, -50, 0, 330)
+    add_grass(bob, -425, -275)
     done()
 
 
@@ -51,12 +52,14 @@ def draw_house_base(base: Turtle, windows: Turtle, x: float, y: float) -> None:
     base.up()
     base.goto(x, y)
     base.down()
+    base.begin_fill()
     i: int = 0
     while (i < 4):
         base.forward(250)
         base.right(90)
         base.forward(25)
         i += 1
+    base.end_fill()
     make_square(windows, x + 5, y + -45, 50)
     make_square(windows, x + 175, y + -45, 50)
 
@@ -75,15 +78,17 @@ def draw_house_roof(roof: Turtle, x: float, y: float, length: float) -> None:
 
 def make_square(square: Turtle, x: float, y: float, width: float) -> None:
     "Draws a square at desired x, y position and desired width."
-    square.color(0, 0, 0)
+    square.color(218, 216, 216)
     square.up()
     square.goto(x, y)
     square.down()
+    square.begin_fill()
     i: int = 0
     while (i < 4):
         square.forward(width)
         square.right(90)
         i += 1
+    square.end_fill()
     
 
 def make_triangle(tri: Turtle, x: float, y: float, length: float) -> None:
@@ -97,6 +102,21 @@ def make_triangle(tri: Turtle, x: float, y: float, length: float) -> None:
         tri.forward(length)
         tri.left(120)
         i += 1
+
+
+def add_grass(grass: Turtle, x: float, y: float) -> None: 
+    grass.color(30, 183, 41)
+    grass.up()
+    grass.goto(x, y)
+    grass.down()
+    i: int = 0
+    grass.begin_fill()
+    while (i < 3):
+        grass.forward(1200)
+        grass.right(90)
+        grass.forward(5)
+        i += 1
+    grass.end_fill()
 
 
 if __name__ == "__main__":
