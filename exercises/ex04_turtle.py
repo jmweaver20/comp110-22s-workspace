@@ -12,11 +12,17 @@ def main() -> None:
     bob: Turtle = Turtle()
     leo: Turtle = Turtle()
     
+    # Increases turtles to max speed to help scene render faster.
+    bob.speed(0)
+    leo.speed(0)
+    
     # The next two lines allow me to change the color of my screen
-    # so that it looks like a "sunset"
+    # so that it looks like a "sunset".
     tur = Screen()
     tur.bgcolor(253, 148, 105)
 
+    # Calls all required functions to build the scene described in
+    # intro docstring.
     draw_sun(bob, leo, -200.0, 250.0)
     draw_house_base(bob, leo, 0.0, 0.0)
     draw_house_roof(bob, -50, 0, 330)
@@ -34,11 +40,12 @@ def main() -> None:
 
 def draw_sun(sun: Turtle, outline: Turtle, x: float, y: float) -> None:
     """Function that draws the sun for the picture."""
+
+    # Makes the sun by turning a very small degree amount 
+    # 100 times - opted for this instead of circle() because when
+    # looking @ sun in real life, doesn't appear to be a perfect circle.
     sun.color(246, 207, 7)
     outline.color(234, 171, 32)
-    sun.speed(0)
-    outline.speed(0)
-
     sun.up()
     sun.goto(x, y)
     sun.down()
@@ -50,6 +57,7 @@ def draw_sun(sun: Turtle, outline: Turtle, x: float, y: float) -> None:
         i += 1
     sun.end_fill()
 
+    # Outlines the sun to add contrast.
     outline.up()
     outline.goto(x, y)
     outline.down()
@@ -74,6 +82,8 @@ def draw_house_base(base: Turtle, windows: Turtle, x: float, y: float) -> None:
         base.forward(25)
         i += 1
     base.end_fill()
+
+    # Adds windows to the house base, once drawn by calling make_square
     make_square(windows, x + 5, y + -45, 50)
     make_square(windows, x + 175, y + -45, 50)
 
@@ -81,11 +91,17 @@ def draw_house_base(base: Turtle, windows: Turtle, x: float, y: float) -> None:
 def draw_house_roof(roof: Turtle, x: float, y: float, length: float) -> None:
     """Draws the roof of the house, adds a 'shadow' to the roof based on a randint number - attempting fun
     grading category."""
+
     make_triangle(roof, x, y, length)
     i: int = 0
     leng: float = length
+
+    # Adds an element of randomness to repeat the shading on the
+    # triangle roof.
+    rand_num: int = randint(20, 75)
+
     roof.begin_fill()
-    while (i < randint(20, 75)):
+    while (i < rand_num):
         leng = leng * 0.97
         make_triangle(roof, x, y, leng)
         i += 1
@@ -144,6 +160,9 @@ def make_door(door: Turtle, x: float, y: float) -> None:
     door.color(0, 0, 0)
     i: int = 0
     door.begin_fill()
+
+    # % Division used here because I don't want a square, I want a rectangle
+    # so the sides will be different lengths (2 sides one length, 2 the other)
     while (i < 4):
         if (i % 2 == 0):
             door.forward(130)
