@@ -22,6 +22,13 @@ def main() -> None:
     draw_house_roof(bob, -50, 0, 330)
     add_grass(bob, -425, -275)
     make_door(bob, 75, -275)
+    make_clouds(bob, -5, 150)
+    make_clouds(bob, -240, 200)
+    make_clouds(bob, -110, 120)
+    make_clouds(bob, -150, 100)
+    make_clouds(bob, 220, 250)
+    make_clouds(bob, 250, 230)
+    make_clouds(bob, -115, 235)
     done()
 
 
@@ -146,6 +153,28 @@ def make_door(door: Turtle, x: float, y: float) -> None:
             door.right(90)
         i += 1
     door.end_fill()
+
+
+def make_circle(circ: Turtle, radius: float) -> None:
+    """Function to make a circle of desired radius."""
+    circ.color(218, 204, 199)
+    circ.begin_fill()
+    circ.circle(radius)
+    circ.end_fill()
+
+
+def make_clouds(cloud: Turtle, x: float, y: float) -> None:
+    "Function that makes clouds by calling make_circles and overlapping them."
+    cloud.up()
+    cloud.goto(x, y)
+    cloud.down()
+    cloud.forward(20)
+    i: int = 0
+    while (i < 7):
+        make_circle(cloud, 20)
+        cloud.right(90)
+        cloud.forward(2)
+        i += 1
 
 
 if __name__ == "__main__":
