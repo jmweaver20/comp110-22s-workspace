@@ -40,7 +40,6 @@ def main() -> None:
 
 def draw_sun(sun: Turtle, outline: Turtle, x: float, y: float) -> None:
     """Function that draws the sun for the picture."""
-    
     # Makes the sun by turning a very small degree amount 
     # 100 times - opted for this instead of circle() because when
     # looking @ sun in real life, doesn't appear to be a perfect circle.
@@ -89,8 +88,7 @@ def draw_house_base(base: Turtle, windows: Turtle, x: float, y: float) -> None:
 
 
 def draw_house_roof(roof: Turtle, x: float, y: float, length: float) -> None:
-    """Draws the roof of the house, adds a 'shadow' to the roof based on a randint number - attempting fun
-    grading category."""
+    """Draws the roof of the house, adds a 'shadow' to the roof based on a randint number - attempting fun grading category."""
     make_triangle(roof, x, y, length)
     i: int = 0
     leng: float = length
@@ -161,7 +159,7 @@ def make_door(door: Turtle, x: float, y: float) -> None:
     door.begin_fill()
 
     # % Division used here because I don't want a square, I want a rectangle
-    # so the sides will be different lengths (2 sides one length, 2 the other)
+    # so the sides will be different lengths (2 sides one length, 2 the other).
     while (i < 4):
         if (i % 2 == 0):
             door.forward(130)
