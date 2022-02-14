@@ -2,7 +2,7 @@
 
 __author__ = "730397253"
 
-from turtle import Turtle, colormode, done 
+from turtle import Turtle, colormode, done, Screen
 from random import randint
 colormode(255)
 
@@ -11,10 +11,17 @@ def main() -> None:
     """The entrypoint of my scene."""
     bob: Turtle = Turtle()
     leo: Turtle = Turtle()
+    
+    # The next two lines allow me to change the color of my screen
+    # so that it looks like a "sunset"
+    tur = Screen()
+    tur.bgcolor(253, 148, 105)
+
     draw_sun(bob, leo, -200.0, 250.0)
     draw_house_base(bob, leo, 0.0, 0.0)
     draw_house_roof(bob, -50, 0, 330)
     add_grass(bob, -425, -275)
+    make_door(bob, 75, -275)
     done()
 
 
@@ -70,10 +77,12 @@ def draw_house_roof(roof: Turtle, x: float, y: float, length: float) -> None:
     make_triangle(roof, x, y, length)
     i: int = 0
     leng: float = length
+    roof.begin_fill()
     while (i < randint(20, 75)):
         leng = leng * 0.97
         make_triangle(roof, x, y, leng)
         i += 1
+    roof.end_fill()
 
 
 def make_square(square: Turtle, x: float, y: float, width: float) -> None:
@@ -93,7 +102,7 @@ def make_square(square: Turtle, x: float, y: float, width: float) -> None:
 
 def make_triangle(tri: Turtle, x: float, y: float, length: float) -> None:
     """Draws a triangle at desired x, y position and desired length."""
-    tri.color(0, 0, 0)
+    tri.color(144, 136, 133)
     tri.up()
     tri.goto(x, y)
     tri.down()
@@ -105,6 +114,7 @@ def make_triangle(tri: Turtle, x: float, y: float, length: float) -> None:
 
 
 def add_grass(grass: Turtle, x: float, y: float) -> None: 
+    """Adds 'grass' to the image as a green rectangle"""
     grass.color(30, 183, 41)
     grass.up()
     grass.goto(x, y)
@@ -117,6 +127,25 @@ def add_grass(grass: Turtle, x: float, y: float) -> None:
         grass.forward(5)
         i += 1
     grass.end_fill()
+
+
+def make_door(door: Turtle, x: float, y: float) -> None:
+    """Function which adds the door to the front of the house."""
+    door.up()
+    door.goto(x, y)
+    door.down()
+    door.color(0, 0, 0)
+    i: int = 0
+    door.begin_fill()
+    while (i < 4):
+        if (i % 2 == 0):
+            door.forward(130)
+            door.right(90)
+        else:
+            door.forward(75)
+            door.right(90)
+        i += 1
+    door.end_fill()
 
 
 if __name__ == "__main__":
