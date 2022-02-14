@@ -40,6 +40,7 @@ def main() -> None:
 
 def draw_sun(sun: Turtle, outline: Turtle, x: float, y: float) -> None:
     """Function that draws the sun for the picture."""
+    
     # Makes the sun by turning a very small degree amount 
     # 100 times - opted for this instead of circle() because when
     # looking @ sun in real life, doesn't appear to be a perfect circle.
@@ -107,7 +108,7 @@ def draw_house_roof(roof: Turtle, x: float, y: float, length: float) -> None:
 
 
 def make_square(square: Turtle, x: float, y: float, width: float) -> None:
-    "Draws a square at desired x, y position and desired width."
+    """Draws a square at desired x, y position and desired width."""
     square.color(218, 216, 216)
     square.up()
     square.goto(x, y)
