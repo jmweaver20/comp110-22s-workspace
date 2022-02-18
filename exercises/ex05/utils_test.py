@@ -70,7 +70,7 @@ def test_sub_large_end() -> None:
     start: int = 0
     end: int = 5
     test_list: list[int] = [1, 2, 3]
-    assert sub(test_list, start, end) == [2, 3]
+    assert sub(test_list, start, end) == [1, 2, 3]
 
 
 def test_sub_work() -> None:
@@ -84,7 +84,7 @@ def test_sub_work() -> None:
 def test_sub_edge() -> None:
     """Ensures that if bounds are the length of the list, the same list is returned. Edge Case."""
     start: int = 0
-    end: int = 4
+    end: int = 5
     test_list: list[int] = [1, 2, 3, 4]
     assert sub(test_list, start, end) == [1, 2, 3, 4]
 
