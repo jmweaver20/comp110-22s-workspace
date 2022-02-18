@@ -20,8 +20,8 @@ def sub(nums: list[int], start: int, end: int) -> list[int]:
         return subset
     if (start < 0):
         start = 0
-    if (end > len(nums) - 1):
-        end = len(nums) - 1
+    if (end > len(nums)):
+        end = len(nums)
     
     i: int = start
     while (i < end):
