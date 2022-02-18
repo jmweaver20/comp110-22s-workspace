@@ -87,4 +87,3 @@ def test_sub_edge() -> None:
     end: int = 5
     test_list: list[int] = [1, 2, 3, 4]
     assert sub(test_list, start, end) == [1, 2, 3, 4]
-
