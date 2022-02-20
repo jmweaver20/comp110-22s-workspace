@@ -1,4 +1,4 @@
-"""Testing for the utils.py file"""
+"""Testing for the utils.py file."""
 
 __author__ = "730397253"
 
@@ -96,7 +96,7 @@ def test_concat_empty() -> None:
 
 
 def test_concat_work() -> None:
-    """Ensures that function returns list with all items in it. Use Case. """
+    """Ensures that function returns list with all items in it. Use Case."""
     num1: list[int] = [1, 2, 3, 4, 5]
     num2: list[int] = [6, 7, 8, 9, 10]
     assert concat(num1, num2) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
