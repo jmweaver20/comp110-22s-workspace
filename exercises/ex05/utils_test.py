@@ -3,8 +3,7 @@
 __author__ = "730397253"
 
 
-from exercises.ex05.utils import only_evens, sub
-# also need to test oncat
+from exercises.ex05.utils import only_evens, sub, concat
 
 
 def test_only_evens_even() -> None:
@@ -87,3 +86,31 @@ def test_sub_edge() -> None:
     end: int = 5
     test_list: list[int] = [1, 2, 3, 4]
     assert sub(test_list, start, end) == [1, 2, 3, 4]
+
+
+def test_concat_empty() -> None:
+    """Ensures that if empty lists are passed, an empty list is returned. Use Case."""
+    num1: list[int] = list()
+    num2: list[int] = list()
+    assert concat(num1, num2) == []
+
+
+def test_concat_work() -> None:
+    """Ensures that function returns list with all items in it. Use Case. """
+    num1: list[int] = [1, 2, 3, 4, 5]
+    num2: list[int] = [6, 7, 8, 9, 10]
+    assert concat(num1, num2) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+def test_concat_1list() -> None:
+    """Ensures if 1st list has values, that list value is returned. Edge Case."""
+    num1: list[int] = [1, 2, 3]
+    num2: list[int] = list()
+    assert concat(num1, num2) == [1, 2, 3]
+
+
+def test_concat_2list() -> None:
+    """Ensures that if 2nd list has values, that list value is returned. Edge Case."""
+    num1: list[int] = list()
+    num2: list[int] = [1, 2, 3]
+    assert concat(num1, num2) == [1, 2, 3]
