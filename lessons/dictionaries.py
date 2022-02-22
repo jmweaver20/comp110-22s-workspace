@@ -3,6 +3,11 @@
 
 # Declaring the type of a dictionary
 schools: dict[str, int]
+test: dict[str, str]
+test = dict()
+test["egg"] = "yolks"
+
+print(test)
 
 # Initialize to an empty dictionary
 schools = dict()
@@ -38,6 +43,13 @@ print(schools)
 # Empty dictionary literal
 schools = {}  # Same as dict()
 print(schools)
+# print(schools["UNCC"])
+
+# Example looping over the keys of a dict
+
+for key in schools:
+    print(f"Key: {key} -> Value: {schools[key]}")
+
 
 # Alternatively, initialize key-value pairs
 schools = {"UNC": 19400, "Duke": 6717, "NCSU": 26150}
