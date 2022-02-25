@@ -28,15 +28,16 @@ def favorite_color(a: dict[str, str]) -> str:
         else:
             color_count[input_dict[key]] = 1
 
-    # remove this
+    # remove below
     print(color_count)
+    # remove above
 
     max_val: int = 0
     for key in color_count:
         if color_count[key] > max_val:
             max_val = color_count[key]
-            colors = color_count
-    
+    # i've assigned the max value so i know what position it's at, but my dict has the ints as values
+    # and the colors as keys, how do i assign colors (str return type) based of value of max_val?
     
     return colors
 
