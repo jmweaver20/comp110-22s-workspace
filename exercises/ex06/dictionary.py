@@ -19,29 +19,36 @@ def invert(a: dict[str, str]) -> dict[str, str]:
 def favorite_color(a: dict[str, str]) -> str:
     """Give dictionary of names and favorite colors, returns most listed color."""
     colors: str = ""
-    color_count = dict[str, int]
-    color_count = dict()
-
-    # Fills color count dictionary with colors and how many times they repeat.
-    for key in a:
-        color_count[a[key]] += 1
-
-    # Fills the occurence list with just the numerical values.
-    occurences: list[int] = list()
-    for key in color_count:
-        occurences.append(color_count[key])
+    input_dict = a
+    color_count: dict[str, int] = dict()
     
-    # Goes through the list of values and finds the largest one.
+    for key in input_dict:
+        if color_count[input_dict[key]] in color_count:
+            color_count[input_dict[key]] += 1
+        else:
+            color_count[input_dict[key]] = 1
+
+    # remove this
+    print(color_count)
+
     max_val: int = 0
-    i: int = 0
-    while(i < len(occurences)):
-        if (occurences[i] > max_val):
-            max_val = occurences[i]
-        i += 1
-
-    # Goes through the color count dictionary and finds the corresponding max value color occurence
     for key in color_count:
-        if (color_count[key] == max_val):
-            colors = color_count[key]
-
+        if color_count[key] > max_val:
+            max_val = color_count[key]
+            colors = color_count
+    
+    
     return colors
+
+
+def count(a: list[str]) -> dict[str, int]:
+    """Returns a dictionary where each key is a value in the list and the key value is the number of times it occurs."""
+    repeats: dict[str, int] = dict()
+    i: int = 0
+    while (i < len(a)):
+        if a[i] in repeats:
+            repeats[a[i]] += 1
+        else:
+            repeats[a[i]] = 1
+        i += 1
+    return repeats
