@@ -10,9 +10,10 @@ def invert(a: dict[str, str]) -> dict[str, str]:
     for key in a:
         # is this valid code?
         if (a[key] == inverted[a[key]]):
-            raise KeyError("Cannot have duplicated keys!")
+            raise KeyError("Cannot have duplicate keys!")
         else:
             inverted[a[key]] = key
+    
     return inverted
 
 
