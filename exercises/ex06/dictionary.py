@@ -1,19 +1,16 @@
-"""DONT FORGET TO ADD THIS"""  # !!!!!!
+"""EX06 - Using Dictionaries and Functions to find maxes, invert key-values, and count occurences."""
 
 __author__ = "730397253"
 
 
 def invert(a: dict[str, str]) -> dict[str, str]:
     """Given a dictionary, inverts the key and value pairs."""
-    inverted = dict[str, str]
-    inverted = dict()
+    inverted: dict[str, str] = dict()
     for key in a:
-        # is this valid code?
         if (a[key] in inverted):
             raise KeyError("Cannot have duplicate keys!")
         else:
             inverted[a[key]] = key
-    
     return inverted
 
 
