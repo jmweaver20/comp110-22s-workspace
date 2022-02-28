@@ -1,4 +1,4 @@
-"""DONT FORGET TO ADD THIS"""
+"""DONT FORGET TO ADD THIS"""  # !!!!!!
 
 __author__ = "730397253"
 
@@ -9,7 +9,7 @@ def invert(a: dict[str, str]) -> dict[str, str]:
     inverted = dict()
     for key in a:
         # is this valid code?
-        if (a[key] == inverted[a[key]]):
+        if (a[key] in inverted):
             raise KeyError("Cannot have duplicate keys!")
         else:
             inverted[a[key]] = key
@@ -24,22 +24,16 @@ def favorite_color(a: dict[str, str]) -> str:
     color_count: dict[str, int] = dict()
     
     for key in input_dict:
-        if color_count[input_dict[key]] in color_count:
+        if input_dict[key] in color_count:
             color_count[input_dict[key]] += 1
         else:
             color_count[input_dict[key]] = 1
-
-    # remove below
-    print(color_count)
-    # remove above
 
     max_val: int = 0
     for key in color_count:
         if color_count[key] > max_val:
             max_val = color_count[key]
-    # i've assigned the max value so i know what position it's at, but my dict has the ints as values
-    # and the colors as keys, how do i assign colors (str return type) based of value of max_val?
-    
+            colors = key
     return colors
 
 
