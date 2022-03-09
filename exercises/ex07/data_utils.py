@@ -38,6 +38,8 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
 
 def head(table: dict[str, list[str]], rows: int) -> dict[str, list[str]]:
     """Produces a column-based table with only the requested number of rows."""
+    if (rows >= len(table)):
+        return table
     condensed: dict[str, list[str]] = {}
     for column in table:
         n_values: list[str] = []
@@ -65,7 +67,7 @@ def concat(tab1: dict[str, list[str]], tab2: dict[str, list[str]]) -> dict[str, 
     for column in tab1:
         merged[column] = tab1[column]
     for column in tab2:
-        if column in tab2:
+        if column in merged:
             merged[column] += tab2[column]
         else:
             merged[column] = tab2[column]
