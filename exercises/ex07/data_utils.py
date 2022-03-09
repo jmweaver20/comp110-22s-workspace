@@ -36,3 +36,54 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
     return result
 
 
+def head(table: dict[str, list[str]], rows: int) -> dict[str, list[str]]:
+    """Produces a column-based table with only the requested number of rows."""
+    condensed: dict[str, list[str]] = {}
+    for column in table:
+        n_values: list[str] = []
+        i: int = 0
+        while (i < rows):
+            n_values.append(table[column][i])
+            i += 1
+        condensed[column] = n_values
+    return condensed
+
+
+# HELP FIXING THIS FUNCTION
+def select(table: dict[str, list[str]], names: list[str]) -> dict[str, list[str]]:
+    """Produces a column-based table with only a specific subset of original columns."""
+    subset: dict[str, list[str]] = {}
+    i: int = 0
+    while (i < len(names)):
+        for names[i] in table:
+            subset[names[i]] = table[names[i]]
+        i += 1
+    return subset
+
+
+def concat(tab1: dict[str, list[str]], tab2: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Produces a column-based table with two tables merged (tab1 and tab2)."""
+    merged: dict[str, list[str]] = {}
+    for column in tab1:
+        merged[column] = tab1[column]
+    for column in tab2:
+        if column in tab2:
+            merged[column] += tab2[column]
+        else:
+            merged[column] = tab2[column]
+    return merged
+
+
+def count(counting: list[str]) -> dict[str, int]:
+    """Produces a dictionary that counts the number of times value repeats in list."""
+    counted_val: dict[str, int] = {}
+    i: int = 0
+    while (i < len(counting)):
+        if counting[i] in counted_val:
+            counted_val[counting[i]] += 1
+        else:
+            counted_val[counting[i]] = 1
+        i += 1
+    return counted_val
+
+
