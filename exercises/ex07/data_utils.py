@@ -49,14 +49,12 @@ def head(table: dict[str, list[str]], rows: int) -> dict[str, list[str]]:
     return condensed
 
 
-# HELP FIXING THIS FUNCTION
 def select(table: dict[str, list[str]], names: list[str]) -> dict[str, list[str]]:
     """Produces a column-based table with only a specific subset of original columns."""
     subset: dict[str, list[str]] = {}
     i: int = 0
     while (i < len(names)):
-        for names[i] in table:
-            subset[names[i]] = table[names[i]]
+        subset[names[i]] = table[names[i]]
         i += 1
     return subset
 
@@ -85,5 +83,3 @@ def count(counting: list[str]) -> dict[str, int]:
             counted_val[counting[i]] = 1
         i += 1
     return counted_val
-
-
