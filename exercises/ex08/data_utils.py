@@ -88,7 +88,7 @@ def count(counting: list[str]) -> dict[str, int]:
 
 
 def average(tab: dict[str, int]) -> float:
-    """Returns a table of the averages of the input data set."""
+    """Returns a table of the averages of the input data set - custom helper function."""
     averages: float = 0.0
     total: float = 0
     divide_by: int = 0
