@@ -32,11 +32,11 @@ class Simpy:
         assert step != 0.0
         self.values.append(start)
         range: float = (stop / step)
-        i: int = 0
-        while (i < range):
-            self.values.append(self.values[i] + step)
+        i: int = 1
+        while (i < (range - 1)):
+            self.values.append(self.values[i - 1] + step)
             i += 1
-        # too many values printed in the ipynb?
+        # too many values printed in the ipynb?; why does decimal one print whole numbers?
     
     def sum(self) -> float:
         """Computes sum of simpy."""
