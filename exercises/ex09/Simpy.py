@@ -27,11 +27,35 @@ class Simpy:
             self.values.append(filler)
             i += 1
     
-    def arrange(self, start: float, stop: float, step: float) -> Simpy:
+    def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fills the values attribute with a range of values in terms of floats."""
         assert step != 0.0
-        filled: Simpy = Simpy([])
-        
+        self.values.append(start)
+        range: float = (stop / step)
+        i: int = 0
+        while (i < range):
+            self.values.append(self.values[i] + step)
+            i += 1
+        # too many values printed in the ipynb?
+    
+    def sum(self) -> float:
+        """Computes sum of simpy."""
+        return sum(self.values)
+    
+    def __add__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Takes two parameters of simpy or float type and adds them together returning 1 simpy."""
+        combined: Simpy = Simpy([])
 
-
-
+        # doesn't work if it's a simpy? prints empty list?
+        if (isinstance(rhs, Simpy)):
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while (i < len(self.values)):
+                combined.values.append(self.values[i] + rhs.values[i])
+                i += 1
+        elif (isinstance(rhs, float)):
+            i: int = 0
+            while (i < len(self.values)):
+                combined.values.append(self.values[i] + rhs) 
+                i += 1
+        return combined
