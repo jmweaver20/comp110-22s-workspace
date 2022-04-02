@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from typing import Union
 
-from numpy import str0
-
 __author__ = "730397253"
 
 
@@ -30,14 +28,15 @@ class Simpy:
     def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fills the values attribute with a range of values in terms of floats."""
         assert step != 0.0
-        self.values.append(start)
-        range: float = (stop / step)
-        i: int = 1
-        while (i < range):
-            self.values.append(self.values[i - 1] + step)
-            i += 1
-        # too many values printed? unsure as to why?
-    
+        if (start < stop):
+            while (start < stop):
+                self.values.append(start)
+                start += step
+        else:
+            while (start > stop):
+                self.values.append(start)
+                start += step
+
     def sum(self) -> float:
         """Computes sum of simpy."""
         return sum(self.values)
@@ -46,16 +45,91 @@ class Simpy:
         """Takes two parameters of simpy or float type and adds them together returning 1 simpy."""
         combined: Simpy = Simpy([])
 
-        # doesn't work if it's a simpy? prints empty list?
-        if (isinstance(rhs, Simpy)):
+        if (isinstance(rhs, float)):
+            i: int = 0
+            while (i < len(self.values)):
+                combined.values.append(self.values[i] + rhs) 
+                i += 1
+        else:
             assert len(self.values) == len(rhs.values)
             i: int = 0
             while (i < len(self.values)):
                 combined.values.append(self.values[i] + rhs.values[i])
                 i += 1
-        elif (isinstance(rhs, float)):
+        return combined
+    
+    def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Takes two parameters of simpy or float and raises to the power returning a simpy."""
+        combined: Simpy = Simpy([])
+
+        if (isinstance(rhs, float)):
             i: int = 0
             while (i < len(self.values)):
-                combined.values.append(self.values[i] + rhs) 
+                combined.values.append(self.values[i] ** rhs)
+                i += 1
+        else:
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while (i < len(self.values)):
+                combined.values.append(self.values[i] ** rhs.values[i])
                 i += 1
         return combined
+    
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Produces mask based on equality of each item in values with another simpy or float."""
+        mask: list[bool] = []
+        
+        if (isinstance(rhs, float)):
+            i: int = 0
+            while (i < len(self.values)):
+                if (self.values[i] == rhs):
+                    mask.append(True)
+                else:
+                    mask.append(False)
+                i += 1
+        else:
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while (i < len(self.values)):
+                if (self.values[i] == rhs.values[i]):
+                    mask.append(True)
+                else:
+                    mask.append(False)
+                i += 1
+        return mask
+    
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Returns a mask of values greater than the float or simpy object passed."""
+        mask: list[bool] = []
+        if (isinstance(rhs, float)):
+            i: int = 0
+            while (i < len(self.values)):
+                if (self.values[i] > rhs):
+                    mask.append(True)
+                else:
+                    mask.append(False)
+                i += 1
+        else:
+            assert len(self.values) == len(rhs.values)
+            i: int = 0
+            while (i < len(self.values)):
+                if (self.values[i] > rhs.values[i]):
+                    mask.append(True)
+                else:
+                    mask.append(False)
+                i += 1
+        return mask
+    
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Subscription notation with simpy objects, or select for certain values."""
+        mask_vals: Simpy = Simpy([])
+
+        if (isinstance(rhs, int)):
+            return self.values[rhs]
+        else:
+            i: int = 0
+            while (i < len(self.values)):
+                if(rhs[i]):
+                    mask_vals.values.append(self.values[i])
+                i += 1
+        return mask_vals
