@@ -21,7 +21,6 @@ class Simpy:
     
     def fill(self, filler: float, num: int) -> None:
         """Fills a simpy's values with filler values num amount of times."""
-        
         if len(self.values) == 0:
             self.values.append(filler)
         else:
