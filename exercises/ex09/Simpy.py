@@ -8,6 +8,7 @@ __author__ = "730397253"
 
 
 class Simpy:
+    """Simplified version of NumPY in Python."""
     values: list[float]
 
     def __init__(self, vals: list[float]):
@@ -20,11 +21,24 @@ class Simpy:
     
     def fill(self, filler: float, num: int) -> None:
         """Fills a simpy's values with filler values num amount of times."""
-        i: int = 0
-        while (i < num):
+        
+        if len(self.values) == 0:
             self.values.append(filler)
+        else:
+            self.values[0] = filler
+        
+        i: int = 1
+        while (i < len(self.values)):
+            self.values[i] = filler
             i += 1
-    
+        if (len(self.values) > num):
+            while (len(self.values) > num):
+                self.values.pop()
+        if i < num:
+            while (i < num):
+                self.values.append(filler)
+                i += 1
+
     def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fills the values attribute with a range of values in terms of floats."""
         assert step != 0.0
