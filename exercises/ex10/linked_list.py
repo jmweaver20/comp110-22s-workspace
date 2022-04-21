@@ -42,4 +42,33 @@ def last(head: Optional[Node]) -> int:
         if (head.next is None):
             return head.data
         else:
-            last(head.next)
+            return last(head.next)
+
+
+def value_at(head: Optional[Node], index: int) -> int:
+    """Returns data at given index or raises error if no index."""
+    if head is None:
+        raise IndexError("Index is out of bounds on list.")
+    else:
+        if index == 0:
+            return head.data
+        else:
+            return value_at(head.next, index - 1)
+
+
+def max(head: Optional[Node]) -> int:
+    """Returns max value of head."""
+    if head is None:
+        raise ValueError("max cannot be called with empty list.")
+    else:
+        # this will reset max val to last value of linked list ??
+        max_val: int
+        if head.next is None:
+            max_val = head.data
+            return max_val
+        else:
+            max_val = head.data
+            if head.data > max_val:
+                max_val = head.data
+            return max(head.next)
+        
