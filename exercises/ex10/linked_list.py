@@ -71,4 +71,15 @@ def max(head: Optional[Node]) -> int:
             if head.data > max_val:
                 max_val = head.data
             return max(head.next)
-        
+
+
+def linkify(items: list[int]) -> Optional[Node]:
+
+    if (len(items) == 0):
+        return None
+    else:
+        # how can i do this without hard coding numbers
+        linked: Node = Node()
+        linked.data = items[0]
+        linked.next = linkify(items[0 + 1])
+        return linked
