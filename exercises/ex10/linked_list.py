@@ -61,25 +61,41 @@ def max(head: Optional[Node]) -> int:
     if head is None:
         raise ValueError("max cannot be called with empty list.")
     else:
-        # this will reset max val to last value of linked list ??
-        max_val: int
         if head.next is None:
-            max_val = head.data
-            return max_val
+            return head.data
         else:
-            max_val = head.data
+            max_val: int = max(head.next)
             if head.data > max_val:
-                max_val = head.data
-            return max(head.next)
+                return head.data
+            else:
+                return max_val
 
 
 def linkify(items: list[int]) -> Optional[Node]:
-
+    """Links a list of items together into one linked list."""
     if (len(items) == 0):
         return None
+    if (len(items) == 1):
+        return Node(items[0], None)
     else:
-        # how can i do this without hard coding numbers
-        linked: Node = Node()
-        linked.data = items[0]
-        linked.next = linkify(items[0 + 1])
-        return linked
+        return Node(items[0], linkify(items[1:]))
+
+
+def scale(head: Optional[Node], factor: int) -> Optional[Node]:
+    """Scales a linked list by the factor."""
+    if head is None:
+        raise ValueError("Scale cannot be called with empty list.")
+    else:
+        if head.next is None:
+            return Node(head.data * factor, None)
+        else:
+            return Node(head.data * factor, scale(head.next, factor))
+
+
+# testing in this file because test file not working?
+items: list[int] = [1, 2, 3]
+print(linkify(items))
+
+linked: Node = Node(5, Node(2, Node(3, None)))
+print(scale(linked, 2))
+    
