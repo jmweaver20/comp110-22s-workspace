@@ -34,7 +34,7 @@ def test_value_at_full() -> None:
 
 
 def test_max_no_val() -> None:
-    """max should raise Value Error if list empty."""
+    """Max should raise Value Error if list empty."""
     with pytest.raises(ValueError):
         max(None)
 
@@ -60,14 +60,14 @@ def test_linkify_with_val() -> None:
 
 
 def test_linkify_single_val() -> None:
+    """Tests linkify with a single value."""
     items1: list[int] = [1]
     assert is_equal(linkify(items1), Node(1, None))
 
 
 def test_scale_no_val() -> None:
-    """Raises error if scale doesn't have value."""
-    with pytest.raises(ValueError):
-        scale(None, 3)
+    """Return none if passed with no value."""
+    assert scale(None, 3) is None
 
 
 def test_scale_with_val() -> None:

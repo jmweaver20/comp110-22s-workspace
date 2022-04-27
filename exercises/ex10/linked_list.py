@@ -84,7 +84,7 @@ def linkify(items: list[int]) -> Optional[Node]:
 def scale(head: Optional[Node], factor: int) -> Optional[Node]:
     """Scales a linked list by the factor."""
     if head is None:
-        raise ValueError("Scale cannot be called with empty list.")
+        return None
     else:
         if head.next is None:
             return Node(head.data * factor, None)
