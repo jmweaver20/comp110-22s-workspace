@@ -90,12 +90,3 @@ def scale(head: Optional[Node], factor: int) -> Optional[Node]:
             return Node(head.data * factor, None)
         else:
             return Node(head.data * factor, scale(head.next, factor))
-
-
-# testing in this file because test file not working?
-items: list[int] = [1, 2, 3]
-print(linkify(items))
-
-linked: Node = Node(5, Node(2, Node(3, None)))
-print(scale(linked, 2))
-    

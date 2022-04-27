@@ -1,7 +1,7 @@
 """Tests for linked list utils."""
 
 
-from exercises.ex10.linked_list import Node, last, value_at, max, linkify, scale
+from exercises.ex10.linked_list import Node, last, value_at, max, linkify, scale, is_equal
 import pytest
 
 __author__ = "730397253"
@@ -52,13 +52,16 @@ def test_linkify_noval() -> None:
     items: list[int] = []
     assert linkify(items) is None
 
-# why is this not working? 
+
 def test_linkify_with_val() -> None:
     """Should return linked list starting at index 0."""
     items: list[int] = [1, 2, 3]
-    assert linkify(items) == Node(1, Node(2, Node(3, None)))
+    assert is_equal(linkify(items), Node(1, Node(2, Node(3, None))))
+
+
+def test_linkify_single_val() -> None:
     items1: list[int] = [1]
-    assert linkify(items1) == Node(1, None)
+    assert is_equal(linkify(items1), Node(1, None))
 
 
 def test_scale_no_val() -> None:
@@ -66,10 +69,10 @@ def test_scale_no_val() -> None:
     with pytest.raises(ValueError):
         scale(None, 3)
 
-# this not working either?
+
 def test_scale_with_val() -> None:
     """Returns linked list scaled by factor."""
     factor: int = 2
     linked: Node = Node(1, Node(2, Node(3, None)))
     correct: Node = Node(2, Node(4, Node(6, None)))
-    assert scale(linked, factor) == correct
+    assert is_equal(scale(linked, factor), correct)
