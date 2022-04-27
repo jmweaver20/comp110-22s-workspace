@@ -69,6 +69,7 @@ def test_scale_no_val() -> None:
 # this not working either?
 def test_scale_with_val() -> None:
     """Returns linked list scaled by factor."""
-    factor: int = 3
+    factor: int = 2
     linked: Node = Node(1, Node(2, Node(3, None)))
-    assert scale(linked, factor) == Node(2, Node(4, Node(6, None)))
+    correct: Node = Node(2, Node(4, Node(6, None)))
+    assert scale(linked, factor) == correct
